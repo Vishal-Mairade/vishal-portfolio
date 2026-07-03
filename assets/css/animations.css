@@ -1,0 +1,293 @@
+/* ============================================================
+   ANIMATIONS.CSS — Keyframes & Animation Utilities
+   Portfolio: Vishal Mairade | Senior PHP Laravel Developer
+============================================================ */
+
+/* ============================================================
+   1. KEYFRAMES
+============================================================ */
+
+/* Cursor blink for typing effect */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Pulsing dot (badge, logo) */
+@keyframes pulse-dot {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 6px currentColor;
+  }
+  50% {
+    transform: scale(1.3);
+    box-shadow: 0 0 14px currentColor;
+  }
+}
+
+/* Floating orb drift */
+@keyframes orb-drift {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  33%  { transform: translate(30px, -30px) scale(1.05); }
+  66%  { transform: translate(-20px, 20px) scale(0.95); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+/* Ring rotation */
+@keyframes rotate-ring {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Floating icons gentle bob */
+@keyframes float-orbit {
+  0%, 100% { margin-top: 0px; }
+  50%       { margin-top: -8px; }
+}
+
+/* Scroll indicator bounce */
+@keyframes bounce-scroll {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+/* Scroll wheel inner motion */
+@keyframes scroll-wheel {
+  0%   { transform: translateY(0); opacity: 1; }
+  50%  { transform: translateY(10px); opacity: 0.3; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Heartbeat for footer ❤ */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  20%       { transform: scale(1.25); }
+  40%       { transform: scale(1); }
+  60%       { transform: scale(1.15); }
+  80%       { transform: scale(1); }
+}
+
+/* Fade in up (general reveal) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in from left */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade in from right */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scale in */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Gradient shift (for animated gradient text / borders) */
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glimmer sweep (for buttons) */
+@keyframes glimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Particle float */
+@keyframes particle-float {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-80vh) translateX(var(--drift, 40px)); opacity: 0; }
+}
+
+/* ============================================================
+   2. REVEAL ANIMATION CLASSES
+   These are the initial (hidden) states. 
+   The JS IntersectionObserver adds `.revealed` to trigger.
+============================================================ */
+.reveal-up,
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-up    { transform: translateY(30px); }
+.reveal-left  { transform: translateX(-40px); }
+.reveal-right { transform: translateX(40px); }
+
+.reveal-up.revealed,
+.reveal-left.revealed,
+.reveal-right.revealed {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* ============================================================
+   3. STAGGER CHILDREN UTILITY
+   Apply .stagger-children to a parent and each direct child
+   gets a sequential animation delay.
+============================================================ */
+.stagger-children > *:nth-child(1)  { transition-delay: 0ms;   }
+.stagger-children > *:nth-child(2)  { transition-delay: 80ms;  }
+.stagger-children > *:nth-child(3)  { transition-delay: 160ms; }
+.stagger-children > *:nth-child(4)  { transition-delay: 240ms; }
+.stagger-children > *:nth-child(5)  { transition-delay: 320ms; }
+.stagger-children > *:nth-child(6)  { transition-delay: 400ms; }
+.stagger-children > *:nth-child(7)  { transition-delay: 480ms; }
+.stagger-children > *:nth-child(8)  { transition-delay: 560ms; }
+
+/* ============================================================
+   4. BUTTON GLOW PULSE (applied on hover via CSS)
+============================================================ */
+@keyframes btn-glow-pulse {
+  0%, 100% { box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35); }
+  50%       { box-shadow: 0 4px 30px rgba(37, 99, 235, 0.65), 0 0 60px rgba(37, 99, 235, 0.2); }
+}
+
+.btn-primary:hover {
+  animation: btn-glow-pulse 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   5. HERO SECTION ENTRANCE (runs once on page load)
+============================================================ */
+.hero-content {
+  animation: fadeInLeft 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.2s;
+}
+
+.hero-visual {
+  animation: fadeInRight 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.4s;
+}
+
+/* Badge, greeting, name, title cascade */
+.hero-badge        { animation: fadeInUp 0.6s ease both; animation-delay: 0.5s; }
+.hero-greeting     { animation: fadeInUp 0.6s ease both; animation-delay: 0.6s; }
+.hero-name         { animation: fadeInUp 0.6s ease both; animation-delay: 0.7s; }
+.hero-title-wrapper{ animation: fadeInUp 0.6s ease both; animation-delay: 0.8s; }
+.hero-description  { animation: fadeInUp 0.6s ease both; animation-delay: 0.9s; }
+.hero-actions      { animation: fadeInUp 0.6s ease both; animation-delay: 1.0s; }
+.hero-stats        { animation: fadeInUp 0.6s ease both; animation-delay: 1.1s; }
+.scroll-indicator  { animation: fadeInUp 0.6s ease both; animation-delay: 1.4s; }
+
+/* ============================================================
+   6. SHIMMER BORDER EFFECT (used on featured cards)
+============================================================ */
+@keyframes border-shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.shimmer-border {
+  background: linear-gradient(
+    90deg,
+    rgba(37, 99, 235, 0.5),
+    rgba(139, 92, 246, 0.5),
+    rgba(6, 182, 212, 0.5),
+    rgba(37, 99, 235, 0.5)
+  );
+  background-size: 200% auto;
+  animation: border-shimmer 3s linear infinite;
+}
+
+/* ============================================================
+   7. SKILL BAR ANIMATION (triggered by IntersectionObserver)
+============================================================ */
+.skill-card .skill-bar {
+  transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: var(--delay, 0ms);
+}
+
+/* ============================================================
+   8. FLOATING PARTICLES
+============================================================ */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: particle-float linear infinite;
+}
+
+/* ============================================================
+   9. GRADIENT TEXT ANIMATION
+============================================================ */
+.gradient-text-animated {
+  background: linear-gradient(
+    135deg,
+    #60a5fa 0%,
+    #06B6D4 25%,
+    #8B5CF6 50%,
+    #2563EB 75%,
+    #60a5fa 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* ============================================================
+   10. HOVER LIFT UTILITY
+============================================================ */
+.hover-lift {
+  transition: transform var(--t-spring), box-shadow var(--t-base);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+
+/* ============================================================
+   11. NAV LINK ACTIVE UNDERLINE ANIMATION
+============================================================ */
+.nav-link::after {
+  transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================================
+   12. SPINNER KEYFRAME
+============================================================ */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
