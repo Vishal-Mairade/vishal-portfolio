@@ -18,7 +18,7 @@
      1. NAVBAR — Scroll-triggered glassmorphism
   ============================================================ */
   (function initNavbar() {
-    const navbar    = document.getElementById('navbar');
+    const navbar = document.getElementById('navbar');
     const SCROLL_THRESHOLD = 20;
 
     function onScroll() {
@@ -37,7 +37,7 @@
      2. MOBILE MENU — Hamburger toggle
   ============================================================ */
   (function initMobileMenu() {
-    const hamburger  = document.getElementById('hamburger');
+    const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileLinks = document.querySelectorAll('.mobile-nav-link, .mobile-cta');
 
@@ -125,16 +125,16 @@
       'PHP Specialist',
     ];
 
-    let phraseIndex  = 0;
-    let charIndex    = 0;
-    let isDeleting   = false;
-    let isPaused     = false;
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let isPaused = false;
 
     /* Timing configuration (ms) */
-    const TYPE_SPEED    = 75;   // ms per character typed
-    const DELETE_SPEED  = 40;   // ms per character deleted
-    const PAUSE_AFTER   = 2000; // ms to wait after full phrase is typed
-    const PAUSE_BEFORE  = 300;  // ms to wait before typing next phrase
+    const TYPE_SPEED = 75;   // ms per character typed
+    const DELETE_SPEED = 40;   // ms per character deleted
+    const PAUSE_AFTER = 2000; // ms to wait after full phrase is typed
+    const PAUSE_BEFORE = 300;  // ms to wait before typing next phrase
 
     function tick() {
       const currentPhrase = phrases[phraseIndex];
@@ -251,12 +251,12 @@
   ============================================================ */
   (function initFloatingIconTitles() {
     const iconMapping = {
-      'icon-php':     'PHP',
+      'icon-php': 'PHP',
       'icon-laravel': 'Laravel',
-      'icon-mysql':   'MySQL',
-      'icon-react':   'React',
-      'icon-api':     'REST API',
-      'icon-git':     'Git',
+      'icon-mysql': 'MySQL',
+      'icon-react': 'React',
+      'icon-api': 'REST API',
+      'icon-git': 'Git',
     };
 
     Object.entries(iconMapping).forEach(function ([cls, label]) {
@@ -273,7 +273,7 @@
   ============================================================ */
   (function initProjectFilters() {
     const filterBtns = document.querySelectorAll('.proj-filter');
-    const projCards  = document.querySelectorAll('.proj-card');
+    const projCards = document.querySelectorAll('.proj-card');
     if (!filterBtns.length) return;
 
     filterBtns.forEach(function (btn) {
@@ -316,7 +316,7 @@
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
         glow.style.left = x + 'px';
-        glow.style.top  = y + 'px';
+        glow.style.top = y + 'px';
       });
     });
   })();
@@ -325,26 +325,27 @@
      11. PROJECT MODAL
   ============================================================ */
   (function initProjectModal() {
-    const overlay   = document.getElementById('projModalOverlay');
-    const modal     = document.getElementById('projModal');
-    const closeBtn  = document.getElementById('projModalClose');
-    const content   = document.getElementById('projModalContent');
+    const overlay = document.getElementById('projModalOverlay');
+    const modal = document.getElementById('projModal');
+    const closeBtn = document.getElementById('projModalClose');
+    const content = document.getElementById('projModalContent');
 
     if (!overlay || !modal || !closeBtn || !content) return;
 
     /* Mini project DB — maps data-project to extended info */
     const projectData = {
-      firstmedix:  { title: 'First Medix', category: 'Healthcare', desc: 'A comprehensive Healthcare Information Management System handling patient records, clinical workflows, appointments, and billing. Designed for multi-branch hospital networks with real-time data visibility across departments.' },
-      ems:         { title: 'Employee Management System', category: 'HRMS', desc: 'Full-featured HRMS covering the complete employee lifecycle. Includes payroll automation, QR-based attendance with geo-fencing, performance reviews, leave management, and multi-department analytics.' },
+      firstmedix: { title: 'First Medix', category: 'Healthcare', desc: 'A comprehensive Healthcare Information Management System handling patient records, clinical workflows, appointments, and billing. Designed for multi-branch hospital networks with real-time data visibility across departments.' },
+      ems: { title: 'Employee Management System', category: 'HRMS', desc: 'Full-featured HRMS covering the complete employee lifecycle. Includes payroll automation, QR-based attendance with geo-fencing, performance reviews, leave management, and multi-department analytics.' },
       studygenius: { title: 'Study Genius AI', category: 'AI Platform', desc: 'AI-powered adaptive learning platform integrating OpenAI GPT for dynamic content generation. Features spaced repetition quizzes, personalized study paths, and real-time progress reporting.' },
-      asset:       { title: 'Asset Management Platform', category: 'Enterprise SaaS', desc: 'Enterprise asset lifecycle management covering acquisition, tracking via QR/barcode, depreciation calculations, maintenance scheduling, and compliance audits with full role-based access control.' },
-      wrkman:      { title: 'Wrkman', category: 'Field Service', desc: 'End-to-end field service management connecting businesses with skilled tradespeople. Features real-time GPS tracking, job dispatch, automated quote-to-invoice workflows, and Firebase-powered push notifications.' },
-      parq:        { title: 'Parq', category: 'Smart Parking', desc: 'IoT-integrated smart parking management platform with real-time slot availability, QR-based entry/exit, payment gateway integration, and an operator dashboard for revenue analytics.' },
-      fitness:     { title: 'Health & Fitness App', category: 'Healthcare', desc: 'Personalized fitness platform with AI-generated workout & meal plans, real-time Firebase chat between trainers and clients, streak tracking, and detailed progress visualization.' },
-      games:       { title: 'Dream App Games', category: 'Gaming', desc: 'Multi-game backend platform with real-time Firebase leaderboards, in-app purchases, virtual currency management, social features, and game state sync with anti-cheat validation.' },
-      embro:       { title: 'EmbroHub', category: 'Marketplace', desc: 'B2B embroidery marketplace managing multi-vendor orders, digitization requests, file delivery workflows, and bulk pricing/quote engines for designers, manufacturers, and retailers.' },
-      playzone:    { title: 'PlayZone Fun', category: 'Entertainment', desc: 'Subscription-based entertainment hub offering interactive games, streaming content, and social community features. Includes freemium access tiers, content delivery optimization, and a social moderation pipeline.' },
-      viraal:      { title: 'Viraal Call', category: 'Telecom', desc: 'Next-gen VoIP platform with viral referral-based growth mechanics, virtual number provisioning, real-time call management, and a comprehensive analytics and reporting suite.' },
+      asset: { title: 'Asset Management Platform', category: 'Enterprise SaaS', desc: 'Enterprise asset lifecycle management covering acquisition, tracking via QR/barcode, depreciation calculations, maintenance scheduling, and compliance audits with full role-based access control.' },
+      wrkman: { title: 'Wrkman', category: 'Field Service', desc: 'End-to-end field service management connecting businesses with skilled tradespeople. Features real-time GPS tracking, job dispatch, automated quote-to-invoice workflows, and Firebase-powered push notifications.' },
+      parq: { title: 'Parq', category: 'Smart Parking', desc: 'IoT-integrated smart parking management platform with real-time slot availability, QR-based entry/exit, payment gateway integration, and an operator dashboard for revenue analytics.' },
+      fitness: { title: 'Health & Fitness App', category: 'Healthcare', desc: 'Personalized fitness platform with AI-generated workout & meal plans, real-time Firebase chat between trainers and clients, streak tracking, and detailed progress visualization.' },
+      games: { title: 'Dream App Games', category: 'Gaming', desc: 'Multi-game backend platform with real-time Firebase leaderboards, in-app purchases, virtual currency management, social features, and game state sync with anti-cheat validation.' },
+      embro: { title: 'EmbroHub', category: 'Marketplace', desc: 'B2B embroidery marketplace managing multi-vendor orders, digitization requests, file delivery workflows, and bulk pricing/quote engines for designers, manufacturers, and retailers.' },
+      playzone: { title: 'PlayZone Fun', category: 'Entertainment', desc: 'Subscription-based entertainment hub offering interactive games, streaming content, and social community features. Includes freemium access tiers, content delivery optimization, and a social moderation pipeline.' },
+      viraal: { title: 'Viraal Call', category: 'Telecom', desc: 'Next-gen VoIP platform with viral referral-based growth mechanics, virtual number provisioning, real-time call management, and a comprehensive analytics and reporting suite.' },
+      klyvro: { title: 'KLYVRO', category: 'AI SaaS', desc: 'AI-powered restaurant marketing SaaS that helps restaurants generate marketing campaigns and channel-specific social content, manage campaigns, track AI usage, and grow their online presence with a streamlined marketing workflow.' },
     };
 
     function openModal(projectKey) {
@@ -399,7 +400,7 @@
 
       var icons = {
         success: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>',
-        error:   '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',
+        error: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',
       };
 
       var toast = document.createElement('div');
@@ -408,11 +409,11 @@
       toast.innerHTML =
         '<div class="toast-icon">' + (icons[type] || '') + '</div>' +
         '<div class="toast-body">' +
-          '<div class="toast-title">' + title + '</div>' +
-          '<div class="toast-msg">'   + message + '</div>' +
+        '<div class="toast-title">' + title + '</div>' +
+        '<div class="toast-msg">' + message + '</div>' +
         '</div>' +
         '<div class="toast-close" aria-label="Dismiss" tabindex="0">' +
-          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
         '</div>';
 
       container.appendChild(toast);
@@ -443,7 +444,7 @@
      12b. CONTACT FORM — Real EmailJS Integration
   ============================================================ */
   (function initContactForm() {
-    var form      = document.getElementById('contactForm');
+    var form = document.getElementById('contactForm');
     var submitBtn = document.getElementById('formSubmitBtn');
     if (!form || !submitBtn) return;
 
@@ -462,16 +463,16 @@
 
     function markError(el) {
       el.style.borderColor = '#ef4444';
-      el.style.boxShadow   = '0 0 0 3px rgba(239,68,68,0.12)';
+      el.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.12)';
       el.addEventListener('input', function () {
         el.style.borderColor = '';
-        el.style.boxShadow   = '';
+        el.style.boxShadow = '';
       }, { once: true });
     }
 
     function validate() {
-      var name    = form.querySelector('#contactName');
-      var email   = form.querySelector('#contactEmail');
+      var name = form.querySelector('#contactName');
+      var email = form.querySelector('#contactEmail');
       var subject = form.querySelector('#contactSubject');
       var message = form.querySelector('#contactMessage');
       var ok = true;
@@ -510,13 +511,13 @@
       var params = {
         from_name: form.querySelector('#contactName').value.trim(),
         from_email: form.querySelector('#contactEmail').value.trim(),
-        subject:    form.querySelector('#contactSubject').value.trim(),
-        message:    form.querySelector('#contactMessage').value.trim(),
-        to_name:    'Vishal',
+        subject: form.querySelector('#contactSubject').value.trim(),
+        message: form.querySelector('#contactMessage').value.trim(),
+        to_name: 'Vishal',
       };
 
       emailjs.send(
-        window.EMAILJS_SERVICE_ID  || 'YOUR_SERVICE_ID',
+        window.EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
         window.EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
         params
       ).then(function () {
